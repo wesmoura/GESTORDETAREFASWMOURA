@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestor de Tarefas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="main-container">
+    <!-- Título e Imagem -->
+    <div id="header">
+      <h1>Gestão de Tarefas Magalu</h1>
+    </div>
+
+    <!-- Authentication Container -->
+    <div id="auth-container">
+      <div id="login-form">
+        <h2>Entrar</h2>
+        <input type="text" id="login-username" placeholder="Usuário" required>
+        <input type="password" id="login-password" placeholder="Senha" required>
+        <input type="text" id="login-branch" placeholder="Filial" required>
+        <label>
+          <input type="checkbox" id="login-central"> Login Central
+        </label>
+        <button id="login-button">Entrar</button>
+        <p>Não tem uma conta? <span id="show-register-form" class="link">Cadastrar</span></p>
+      </div>
+      <div id="register-form" style="display:none;">
+        <h2>Cadastro</h2>
+        <input type="text" id="register-username" placeholder="Usuário" required>
+        <input type="password" id="register-password" placeholder="Senha" required>
+        <input type="text" id="register-branch" placeholder="Filial" required>
+        <label>
+          <input type="checkbox" id="register-central"> Login Central
+        </label>
+        <button id="register-button">Cadastrar</button>
+        <p>Já tem uma conta? <span id="show-login-form" class="link">Entrar</span></p>
+      </div>
+    </div>
+
+    <!-- Container de Tarefas -->
+    <div id="task-container" style="display:none;">
+      <h2 id="user-name"></h2>
+      <input type="text" id="task-input" placeholder="Digite sua tarefa...">
+      <button id="add-task">Adicionar Tarefa</button>
+      <ul id="task-list"></ul>
+      <button id="logout-button" style="display:none;">Sair</button>
+    </div>
+
+    <!-- Botão de Limpar Dados -->
+    <button id="clear-data-button" style="display:none;">Limpar Dados</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
