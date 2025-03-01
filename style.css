@@ -1,143 +1,321 @@
-body.lakers-theme {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #552583, #FDB927); /* Roxo e Amarelo Lakers */
-    color: #fff;
+/* General style */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #552583, #FDB927); /* Roxo e Amarelo Lakers */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Screen height */
+  text-align: center;
 }
 
-.form-container {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    width: 350px;
-    text-align: center;
+/* Main Container */
+#main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-.form-container h2 {
-    color: #FDB927;
-    margin-bottom: 25px;
+/* Header */
+#header {
+  text-align: center;
+  position: relative; /* Alterado para relative */
+  top: 0; /* Alinhado ao topo */
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better readability */
+  padding: 20px;
+  border-radius: 10px;
+  width: 100%; /* Ocupa toda a largura */
+  z-index: 1; /* Garante que o header fique acima dos outros elementos */
+}
+
+#header h1 {
+  font-size: 3em;
+  margin: 0;
+  padding: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Adiciona sombra ao texto do título */
+  color: #FDB927; /* Amarelo */
+}
+
+/* Forms */
+#auth-container {
+  margin-top: 20px; /* Ajuste a margem superior para evitar sobreposição */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 0; /* Garante que o container de autenticação fique abaixo do header */
+}
+
+#login-form, #register-form {
+  background-color: rgba(255, 255, 255, 0.1); /* Fundo semi-transparente branco */
+  padding: 30px;
+  border-radius: 10px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para destacar os formulários */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  color: #FDB927; /* Amarelo */
 }
 
 input[type="text"], input[type="password"] {
-    width: calc(100% - 22px);
-    padding: 12px;
-    margin-bottom: 15px;
-    border: none;
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.2);
-    color: #fff;
+  padding: 12px;
+  margin: 10px 0;
+  width: calc(100% - 22px);
+  border: none;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+input[type="text"]::placeholder, input[type="password"]::placeholder {
+  color: white;
 }
 
 input[type="text"]:focus, input[type="password"]:focus {
-    background: rgba(255, 255, 255, 0.3);
-    outline: none;
+  background: rgba(255, 255, 255, 0.3);
+  outline: none;
+  box-shadow: none;
 }
 
+/* Buttons */
 button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    background-color: #FDB927;
-    color: #552583;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 15px;
-    transition: background-color 0.3s ease;
+  padding: 12px;
+  background-color: #FDB927; /* Amarelo */
+  color: #552583; /* Roxo */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+  margin-bottom: 15px;
 }
 
 button:hover {
-    background-color: #E0A800;
+  background-color: #E0A800; /* Amarelo mais escuro ao passar o mouse */
 }
 
 .secondary-button {
-    background-color: transparent;
-    border: 2px solid #FDB927;
-    color: #FDB927;
+  background-color: transparent;
+  border: 2px solid #FDB927;
+  color: #FDB927;
 }
 
-secondary-button:hover {
-    background-color: rgba(253, 185, 39, 0.2);
+.secondary-button:hover {
+  background-color: rgba(253, 185, 39, 0.2);
 }
 
+/* Task container */
 #task-container {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    width: 600px;
-    text-align: left;
-    margin-top: 20px;
+  display: none;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 600px;
+  text-align: left;
+  margin-top: 20px;
 }
 
-#task-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
+#task-list {
+  list-style-type: none;
+  padding: 0;
 }
 
-#task-header h2 {
-    color: #FDB927;
-    margin: 0;
+#task-list li {
+  background: rgba(255, 255, 255, 0.1);
+  color: black;
+  padding: 15px;
+  margin: 5px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra para destacar as tarefas */
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.header-buttons button {
-    margin-left: 10px;
-    padding: 8px 15px;
+#task-list .done {
+  text-decoration: line-through;
+  background: rgba(255, 255, 255, 0.05);
 }
 
-#task-input-area {
-    display: flex;
-    margin-bottom: 20px;
+#task-list button.delete {
+  background-color: #0078D7; /* Azul Magazine Luiza */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-#task-input-area input {
-    flex-grow: 1;
-    margin-right: 10px;
+#task-list button.delete:hover {
+  background-color: #005bb5;
+}
+
+#logout-button {
+  background-color: #0078D7; /* Azul Magazine Luiza */
+  color: white;
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#logout-button:hover {
+  background-color: #005bb5;
 }
 
 .task-item {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: black; /* Letras pretas */
+}
+
+.task-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.task-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #87CEEB; /* Azul céu */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+}
+
+.task-avatar i {
+  font-size: 20px;
+  color: white;
+}
+
+.task-user {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.task-date {
+  font-size: 0.9em;
+  color: #888;
+}
+
+.task-content {
+  margin: 10px 0;
+}
+
+.task-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.task-actions button {
+  margin-left: 10px;
 }
 
 .task-item.done {
-    text-decoration: line-through;
-    background: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
-#manage-accounts-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Nome do usuário logado */
+#user-name {
+  font-size: 1.5em;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(238, 197, 17, 0.5); /* Adiciona sombra ao texto */
+  color: rgb(255, 230, 0); /* Garante que o texto seja preto */
+  box-shadow: 0 0 10px 10px rgba(255, 255, 255, 0); /* Adiciona uma margem transparente */
 }
 
-#manage-accounts-content {
-    background: rgba(255, 255, 255, 0.9);
-    padding: 20px;
-    border-radius: 8px;
-    width: 400px;
-    position: relative;
-    color: #333;
+/* Logo Magalu */
+.logo-magalu {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-#close-manage-accounts-modal {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 20px;
-    cursor: pointer
+.logo-magalu img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+
+.logo-magalu span {
+  font-size: 2em;
+  font-weight: bold;
+  color: #FDB927; /* Amarelo */
+}
+
+/* Botão de Login Central */
+#central-login-button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #FDB927; /* Amarelo */
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#central-login-button:hover {
+  background-color: #E0A800; /* Amarelo mais escuro ao passar o mouse */
+}
+
+/* Modal */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: rgba(255, 255, 255, 0.9);
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  position: relative;
+  color: #333;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #aaa;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
